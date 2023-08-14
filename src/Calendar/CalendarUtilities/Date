@@ -1,0 +1,45 @@
+import dayjs from "dayjs";
+
+export const Date = (month = dayjs().month(), year = dayjs().year()) => {
+  const firstDateOfMonth = dayjs().year(year).month(month).startOf("month");
+  const lastDateOfMOnth = dayjs().year(year).month(month).endOf("month");
+
+  const arrayOfDate = [];
+
+  //generate prefix date
+  for (let i = 0; i < firstDateOfMonth.day(); i++) {
+    arrayOfDate.push({
+      today:
+        firstDateOfMonth.date(i).toDate().toDateString() ===
+        dayjs().toDate().toDateString(),
+      currentMonth: false,
+      date: firstDateOfMonth.day(i),
+    });
+  }
+  //generate current date
+  for (let i = firstDateOfMonth.date(); i <= lastDateOfMOnth.date(); i++) {
+    arrayOfDate.push({
+      today:
+        firstDateOfMonth.date(i).toDate().toDateString() ===
+        dayjs().toDate().toDateString(),
+      currentMonth: true,
+      date: firstDateOfMonth.date(i),
+    });
+  }
+  //generate remaining
+  const remaining = 42 - arrayOfDate.length;
+  for (
+    let i = lastDateOfMOnth.date() + 1;
+    i <= lastDateOfMOnth.date() + remaining;
+    i++
+  ) {
+    arrayOfDate.push({
+      today:
+        firstDateOfMonth.date(i).toDate().toDateString() ===
+        dayjs().toDate().toDateString(),
+      currentMonth: false,
+      date: lastDateOfMOnth.date(i),
+    });
+  }
+  return arrayOfDate;
+};

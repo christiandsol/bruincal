@@ -1,0 +1,17 @@
+.item {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.btn {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.375rem;
+}
+.today {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
+
+.font {
+  font-size: small;
+}
